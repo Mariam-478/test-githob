@@ -1,25 +1,59 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import Form from './components/Form';
+import Header from './components/Header';
+import Product from './components/Product';
+
+const data = [
+  {
+    name: "TEST",
+    email: "uwyg@s",
+    pass: "1234567"
+  },
+  {
+    name: "TEST-2",
+    email: "uwyg@s",
+    pass: "1234567"
+  },
+  // {
+  //   name: "Sadyr-2",
+  //   email: "sadyr@g",
+  //   pass: "1234567"
+  // },
+]
 
 function App() {
+
+  const [isForm, setIsForm] = useState(false)
+  const [product, setProduct] = useState(data)
+
+  function showForm(){
+    setIsForm((prev)=>!prev)
+  }
+
+  function getTextHello(obj){
+    setProduct((prev)=>{
+      return [...prev,obj]
+    })
+    
+  }
+  console.log(data);
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header state={isForm} onShowForm={showForm}/>
+      {!isForm && <Form onGetTextHello={getTextHello} />}
+
+      {
+        product.map((el)=>(
+          <Product pass={el.pass} name={el.name} email={el.email} />
+        ))
+      }
     </div>
   );
 }
 
 export default App;
+
+
+

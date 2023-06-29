@@ -1,0 +1,26 @@
+header{
+    background-color: bisque;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 30px;
+
+}
+.btn-login{
+    padding: 6px 14px;
+    font-size: 14px;
+}
+
+form{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid;
+    padding: 20px;
+    margin: auto;
+    margin-top: 40px
+}
+form input{
+    padding: 8px;
+    margin-top: 10px;
+}
